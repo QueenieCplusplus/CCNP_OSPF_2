@@ -156,5 +156,10 @@ Open Shortest Path First
   
        R1#conf t
        R1(config)#int s0
+       R1(config-if)# ip cost 50
+       // 將此介面降低成本 50
+       
+       ctrl + Z
+       
     
 
