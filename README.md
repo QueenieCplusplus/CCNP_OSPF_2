@@ -17,7 +17,7 @@ Open Shortest Path First
 
 
              R2
-            /  \                                                                             R
+            /  \                                                                             R 10.2.2.1
      10.1.1.1. 10.1.2.1                                                                     /
      10.1.1.2  10.1.2.2                                                                    /   
          /         \                                                                      /
@@ -25,7 +25,7 @@ Open Shortest Path First
          |           |                                                                    \
         10.1.3.1 10.1.3.2                                                                  \
                                                                                             \
-                                                                                             R
+                                                                                             R 10.2.3.2
  (2) R1 設定
  
      R1#conf t
@@ -82,4 +82,46 @@ Open Shortest Path First
       Neighbor 10.1.2.1
       in the area 0 via interface s1
       Neighbor Priority is 1, state is full.
+      
+ (6) 顯示 ospf 的 LSA (Link state db) 鏈結狀態資料庫
+ 
+       R1#sh ip ospf database
+       
+       ospf router with ID (router id is 10.64.0.1) (process id is 1)
+
+       
+          
+            Router Link State (Area 0)
+       
+       Link ID      ADV Router        Age     Seq#     Checksum      Link count
+       
+     10.64.0.1                                                       4
+     10.64.0.2                                                       4
+     10.1.2.1                                                        4
+     10.1.3.1                                                        4
+     10.2.2.1                                                        5
+     10.2.3.2                                                        5
+       
+       
+       
+              Net Link State (Area 0)
+       
+       Link ID      ADV Router        Age     Seq#     Checksum     
+       10.64.0.2   10.64.0.2          80    0X80000001   0X7990
+       
+ (7) 查看 R1 學習到的路徑
+ 
+      R1#sh ip route
+      codec: O - OSPF
+      
+      10.0.0.0/24 is subnetted, 7 subnets
+      
+      C  10.1.3.0 is directly connected, s0
+      C  10.1.2.0 is directly connected, s1
+      C  10.64.0.0 is directly connected, e0
+      O  10.1.1.0  via 10.1.3.1, s0
+                   via 10.1.2.1, s1
+      O  10.2.3.0  via 10.64.0.2, E0
+      O  10.2.2.0  via 10.64.0.2, E0
+      O  10.2.1.0  via 10.64.0.2, E0
       
