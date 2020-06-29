@@ -130,6 +130,12 @@ Open Shortest Path First
       
       R1# sh ip protocol
       
+      Redistributing: ospf
+      Routing for networks:
+      10.1.3.2/32
+      10.1.2.2/32
+      10.64.0.1/32
+      
       Routing info Source
       
       GW          Distance       Last Update
