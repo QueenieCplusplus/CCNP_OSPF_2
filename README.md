@@ -147,12 +147,12 @@ Open Shortest Path First
       
       distance : (default is 110)
 
-  (9) 詳見步驟 7, 能觀察到路由學習時，經過 10.1.1.0 網段的，可以透過 s0 出去經過 10.1.3.1 的 hops 或是 10.1.2.1 的 hops。
+  (9) 詳見步驟 7, 能觀察到路由學習時，經過 10.1.1.0 網段的，可以透過 s0 出去經過 10.1.3.1 的 hops 或是 10.1.2.1 的 hops
   
         O  10.1.1.0  via 10.1.3.1, s0
                      via 10.1.2.1, s1
    
-  (10) 調整介面成本 cost, 可藉由手動下指令，讓路由被動的選擇最佳路徑。
+  (10) 調整介面成本 cost, 可藉由手動下指令，讓路由被動的選擇最佳路徑
   
        R1#conf t
        R1(config)#int s0
@@ -161,5 +161,22 @@ Open Shortest Path First
        
        ctrl + Z
        
-    
+      
+   (11) 檢視結果
+   
+        R1#sh ip route
+        
+      10.0.0.0/24 is subnetted, 7 subnets
+      
+      C  10.1.3.0 is directly connected, s0
+      C  10.1.2.0 is directly connected, s1
+      C  10.64.0.0 is directly connected, e0
+      O  10.1.1.0  via 10.1.3.1, s0 // s1 介面相對 s0 成本較高，故被過濾掉。
+      O  10.2.3.0  via 10.64.0.2, E0
+      O  10.2.2.0  via 10.64.0.2, E0
+      O  10.2.1.0  via 10.64.0.2, E0
+        
+       
+   
+   
 
