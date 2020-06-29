@@ -17,7 +17,7 @@ Open Shortest Path First
 
 
              R2
-            /  \                                                                             R 10.2.2.1
+            /  \                                                                             10.2.2.1 - R
      10.1.1.1. 10.1.2.1                                                                     /
      10.1.1.2  10.1.2.2                                                                    /   
          /         \                                                                      /
@@ -25,7 +25,7 @@ Open Shortest Path First
          |           |                                                                    \
         10.1.3.1 10.1.3.2                                                                  \
                                                                                             \
-                                                                                             R 10.2.3.2
+                                                                                             10.2.3.2 - R
  (2) R1 設定
  
      R1#conf t
@@ -125,3 +125,18 @@ Open Shortest Path First
       O  10.2.2.0  via 10.64.0.2, E0
       O  10.2.1.0  via 10.64.0.2, E0
       
+  (8) 觀看 routing info 訊息
+      
+      
+      R1# sh ip protocol
+      
+      Routing info Source
+      
+      GW          Distance       Last Update
+      10.1.2.1     110
+      10.2.3.2     110
+      10.1.3.1     110
+      10.2.2.1     110
+      10.64.0.2    110
+      
+      distance : (default is 110)
