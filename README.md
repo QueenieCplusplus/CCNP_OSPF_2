@@ -66,3 +66,20 @@ Open Shortest Path First
      // H - host
      // I - IGMP
      // r - repeater
+ 
+ (5) 利用 area-id 查看鄰近路由器資訊
+      
+      R1#sh ip ospf neighbor detail
+      
+      Neighbor 10.64.0.2
+      in the area 0 via interface E0
+      Neighbor Priority is 1, state is full.
+      
+      Neighbor 10.1.3.1
+      in the area 0 via interface s0
+      Neighbor Priority is 1, state is full.
+      
+      Neighbor 10.1.2.1
+      in the area 0 via interface s1
+      Neighbor Priority is 1, state is full.
+      
