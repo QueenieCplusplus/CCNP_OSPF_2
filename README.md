@@ -50,4 +50,19 @@ Open Shortest Path First
      10.64.0.1/32
      // 目前尚未設定好其他路由器，所以尚未有大量資訊。（如 ）
      
+ (4) 顯示鄰近訊息
+ 
+     R1#sh cdp ne
      
+     DeviceId      Local interface    Holdtme       Capability      Platform    Port  ID
+     
+     R2                 s0                             R
+     R3                 s1                             R
+     R-tainan           e0                             R
+     // capability:
+     // R - Router
+     // B - Source Route Bridge
+     // S - Switcher
+     // H - host
+     // I - IGMP
+     // r - repeater
